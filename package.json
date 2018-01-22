@@ -11,7 +11,7 @@
     "e2e": "ng e2e",
     "pug": "pug -O \"{'doctype':'html'}\" -P --watch src/**/*",
     "predeploy": "pug -O \"{'doctype':'html'}\" -P  src/**/* && ng build --prod --base-href https://junaid1460.github.io/workshops",
-    "deploy": "angular-cli-ghpages"
+    "deploy": "angular-cli-ghpages --repo=https://GH_TOKEN@github.com/junaid1460/workshops --name=\"junaid1460\" --email=junaid1460@gmail.com"
   },
   "private": true,
   "dependencies": {
