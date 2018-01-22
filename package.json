@@ -8,7 +8,8 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "pug" : "pug -O \"{'doctype':'html'}\" -P --watch src/**/*"
   },
   "private": true,
   "dependencies": {
