@@ -9,7 +9,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "pug" : "pug -O \"{'doctype':'html'}\" -P --watch src/**/*"
+    "pug" : "pug -O \"{'doctype':'html'}\" -P --watch src/**/*",
+    "predeploy":"ng build --prod",
+    "deploy" : "gh-pages -d dist"
   },
   "private": true,
   "dependencies": {
