@@ -4,7 +4,7 @@
 .login *{
     width : 100%
 }
-.container {
+.desktop, .mobile {
     display: flex;
     flex-direction: row;
     height: 100vh;
@@ -12,4 +12,8 @@
     justify-content: center;
     align-items: center;
     background: #00BCD4;
+}
+
+.mobile .login{
+    width: 80vw
 }
