@@ -20,6 +20,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { modules } from './material.module';
 import { appRoutes } from './app.routes';
 
+
+document.title = env.app.name;
+
 @NgModule({
   declarations: [
     StudentComponent,
