@@ -3,3 +3,9 @@
     flex-direction: column;
     justify-content: space-around
 }
+
+.tbar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
