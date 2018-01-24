@@ -1,0 +1,15 @@
+mat-toolbar hello
+ul
+    li(*ngFor="let company of companies|async")
+        span {{company | json }}
+        button((click)="deleteCompany(company.id)") X
+div(class="form")
+    input(type="text", #name)
+    input(type="text", #ctc)
+    input(type="text", #idate)
+    input(type="text", #pptdate)
+    input(type="text", #desc)
+    input(type="text", #rldate)
+
+button((click)="add()") add
+    
