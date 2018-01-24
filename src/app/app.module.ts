@@ -5,7 +5,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AppComponent } from './app.component';
-import { environment } from '../environments/environment';
+import { env } from './app.env';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { modules } from './material.module';
 
@@ -15,7 +15,7 @@ import { modules } from './material.module';
   ],
   imports: [ BrowserModule,
     BrowserAnimationsModule,
-    AngularFireModule.initializeApp(environment.firebase, 'placements-app'),
+    AngularFireModule.initializeApp(env.firebase, env.app.name),
     AngularFireAuthModule,
     AngularFirestoreModule,
     ...modules

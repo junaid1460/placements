@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-import { environment as env } from '../environments/environment';
+import { env } from './app.env';
 
 @Component({
   selector: 'app-root',
