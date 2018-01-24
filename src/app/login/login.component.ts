@@ -7,7 +7,7 @@ import { WindowService } from '../services/window.service';
 })
 export class LoginComponent {
     containerClass: string;
-    constructor(private auth: AngularFireAuth, private ws: WindowService) {
+    constructor(private auth: AngularFireAuth, public ws: WindowService) {
     }
 
 }
