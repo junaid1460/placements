@@ -3,7 +3,7 @@ div([ngClass]="this.ws.layout")
         h1 Login
         form
             mat-form-field
-                input(matInput, type="text", placeholder="username", [(ngModel)]="username", required, [ngModelOptions]="standalone")
+                input(matInput, type="text", placeholder="email", [(ngModel)]="username", required, [ngModelOptions]="standalone")
             mat-form-field
                 input(matInput, type="password", placeholder="password", [(ngModel)]="password", required, [ngModelOptions]="standalone")
             button(mat-button, (click)="signIn()") submit
