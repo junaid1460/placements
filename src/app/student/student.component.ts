@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import { env } from '../app.env';
 
@@ -10,7 +11,9 @@ import { env } from '../app.env';
 export class StudentComponent {
   companies: Observable<any>;
   CompanyHandler: AngularFirestoreCollection<any>;
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore,
+              private auth: AngularFireAuth
+              ) {
     this.CompanyHandler = db.collection(env.collections.companies);
     this.companies = this.CompanyHandler.snapshotChanges().map( e => {
       return e.map( d => ({id : d.payload.doc.id , data : d.payload.doc.data()} ));
@@ -24,6 +27,9 @@ export class StudentComponent {
   }
   deleteCompany(docid: string) {
     this.CompanyHandler.doc(docid).delete();
+  }
+  signOut() {
+    this.auth.auth.signOut();
   }
 }
 
