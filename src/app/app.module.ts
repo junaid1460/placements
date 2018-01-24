@@ -10,6 +10,9 @@ import { StudentComponent } from './student/student.component';
 import { LoginComponent } from './login/login.component';
 import { AuthComponent } from './auth/auth.component';
 
+// services
+import { WindowService } from './services/window.service';
+
 import { env } from './app.env';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { modules } from './material.module';
@@ -29,7 +32,7 @@ import { appRoutes } from './app.routes';
     AngularFirestoreModule,
     ...modules
   ],
-  providers: [],
+  providers: [WindowService],
   bootstrap: [AuthComponent]
 })
 export class AppModule { }
