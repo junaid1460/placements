@@ -15,5 +15,8 @@ export const environment = {
   },
   collections: {
     companies : 'companies'
+  },
+  app: {
+    name : 'placements'
   }
 };
