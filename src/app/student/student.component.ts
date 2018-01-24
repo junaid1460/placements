@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-import { env } from './app.env';
+import { env } from '../app.env';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './student.component.html',
+  styleUrls: ['./student.component.css']
 })
-export class AppComponent {
+export class StudentComponent {
   companies: Observable<any>;
   CompanyHandler: AngularFirestoreCollection<any>;
   constructor(private db: AngularFirestore) {
@@ -16,7 +15,6 @@ export class AppComponent {
     this.companies = this.CompanyHandler.snapshotChanges().map( e => {
       return e.map( d => ({id : d.payload.doc.id , data : d.payload.doc.data()} ));
     });
-    document.title = env.app.name;
   }
   add() {
     this.addCompany({name: 'Micro' });

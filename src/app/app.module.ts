@@ -6,8 +6,9 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 // components
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login.component';
+import { StudentComponent } from './student/student.component';
+import { LoginComponent } from './login/login.component';
+import { AuthComponent } from './auth/auth.component';
 
 import { env } from './app.env';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,8 +17,9 @@ import { appRoutes } from './app.routes';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent
+    StudentComponent,
+    LoginComponent,
+    AuthComponent
   ],
   imports: [ BrowserModule,
     appRoutes,
@@ -28,6 +30,6 @@ import { appRoutes } from './app.routes';
     ...modules
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AuthComponent]
 })
 export class AppModule { }
