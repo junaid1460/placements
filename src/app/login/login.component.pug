@@ -1,8 +1,9 @@
 div([ngClass]="this.ws.layout")
     mat-card(class="login")
         h1 Login
-        mat-form-field
-            input(matInput, type="text", placeholder="username")
-        mat-form-field
-            input(matInput, type="password", placeholder="password")
-        button(mat-button) submit
+        form
+            mat-form-field
+                input(matInput, type="text", placeholder="username", [(ngModel)]="username", required, [ngModelOptions]="standalone")
+            mat-form-field
+                input(matInput, type="password", placeholder="password", [(ngModel)]="password", required, [ngModelOptions]="standalone")
+            button(mat-button, (click)="signIn()") submit
