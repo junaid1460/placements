@@ -6,17 +6,19 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { modules } from './material.module';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
-  imports: [
-    BrowserModule,
+  imports: [ BrowserModule,
+    BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase, 'placements-app'),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    ...modules
   ],
   providers: [],
   bootstrap: [AppComponent]
