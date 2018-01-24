@@ -1,4 +1,8 @@
-mat-toolbar hello
+mat-toolbar 
+    div(class="tbar")
+        span Student
+        button(mat-raised-button, (click)="signOut()") Sign Out
+
 ul
     li(*ngFor="let company of companies|async")
         span {{company | json }}
