@@ -9,9 +9,12 @@ import { Router} from '@angular/router';
 })
 export class AuthComponent {
     constructor(private auth: AngularFireAuth, private router: Router) {
-        if (this.auth.auth.currentUser == null) {
-            this.router.navigate(['/login']);
-        }
-        document.title = env.app.name;
+        this.auth.authState.subscribe(e => {
+            if (e) {
+                this.router.navigate(['/student']);
+            } else {
+                this.router.navigate(['/login']);
+            }
+        });
     }
 }
