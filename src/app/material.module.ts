@@ -6,7 +6,8 @@ import {
     MatDatepickerModule,
     MatCardModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSnackBarModule
 } from '@angular/material';
 
 export const modules = [
@@ -15,5 +16,6 @@ export const modules = [
     MatDatepickerModule,
     MatCardModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSnackBarModule
 ];
