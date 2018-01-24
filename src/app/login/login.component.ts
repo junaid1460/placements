@@ -26,11 +26,16 @@ export class LoginComponent {
             this.snck.open('Please enter username and password!', null, {duration : 3000 });
             return;
         }
+        this.snck.open('Signing in!',
+                null, {duration : 1000}
+                );
         this.auth.auth.signInWithEmailAndPassword(this.username, this.password)
             .then(action => {
                 this.router.navigate(['/']);
             }, err => {
-                console.log('error');
+                this.snck.open('Not able to sign in!. Check email and password',
+                null, {duration : 1000}
+                );
             });
     }
 
