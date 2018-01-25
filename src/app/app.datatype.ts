@@ -9,7 +9,7 @@ export interface  Company {
     cgpa?: string;
     dob_range_start?: Date;
     dob_range_end?: Date;
-    max_gap_edu?: number;
+    edu_gap?: number;
     max_active_backlogs: number;
     extra?: string;
 }
