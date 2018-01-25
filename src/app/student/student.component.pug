@@ -3,8 +3,13 @@ mat-toolbar
         span Student
         button(mat-raised-button, (click)="signOut()") Sign Out
 
-ul
-    li(*ngFor="let company of companies|async")
-        span {{company | json }}
-        button((click)="register(company.id)") register
+mat-accordion
+    mat-expansion-panel(*ngFor="let company of companies|async")
+        mat-expansion-panel-header 
+            mat-panel-title {{company.data['name']}}
+            mat-panel-description {{company.data['reg_last_date']}}
+        mat-list
+            mat-list-item(*ngFor="let v of company.data | keyval") {{ v.key }} : {{ v.value }}
+        mat-action-row
+            button(mat-button, (click)="register(company.id)") register
 
