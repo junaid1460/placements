@@ -15,6 +15,9 @@ import { AuthComponent } from './auth/auth.component';
 // services
 import { WindowService } from './services/window.service';
 
+// pipes
+import { KeyValPipe } from './pipes/key.pipe';
+
 import { env } from './app.env';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { modules } from './material.module';
@@ -27,7 +30,8 @@ document.title = env.app.name;
   declarations: [
     StudentComponent,
     LoginComponent,
-    AuthComponent
+    AuthComponent,
+    KeyValPipe
   ],
   imports: [ BrowserModule,
     FormsModule,
