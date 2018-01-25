@@ -3,7 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import { env } from '../app.env';
-
+import { Company } from '../app.datatype';
 @Component({
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.css']
@@ -19,25 +19,15 @@ export class StudentComponent {
       return e.map( d => ({id : d.payload.doc.id , data : d.payload.doc.data()} ));
     });
   }
-  add() {
-    this.addCompany({name: 'Micro' });
+
+  register(companyId: string) {
+    const myid = this.auth.auth.currentUser.uid;
+    const data = {  registred : true};
+    this.db.collection('users').doc(myid).collection('registered').doc(companyId).set(data);
   }
-  addCompany(company: Company) {
-    this.CompanyHandler.add(company);
-  }
-  deleteCompany(docid: string) {
-    this.CompanyHandler.doc(docid).delete();
-  }
+
+
   signOut() {
     this.auth.auth.signOut();
   }
-}
-
-interface  Company {
-  name: string;
-  ctc?: string;
-  interview_date?: Date;
-  preplacement_talk_date?: Date;
-  description?: string;
-  registration_last_date?: Date;
 }
