@@ -3,29 +3,49 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { env } from '../app.env';
 import { Router} from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
+import { Observable, } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 import { MatSnackBar } from '@angular/material';
 import { Text } from '../app.text';
+import { async } from '@angular/core/testing';
+import * as firebase from 'firebase';
 
 @Injectable()
 export class DBService  {
     companies: any[];
     news: any[];
+    subs: Subscription[];
+    subscribe() {
+      const CompanyHandler = this.db.collection(env.collections.companies);
+      const x =  CompanyHandler.snapshotChanges().map( e => {
+      this.companies = [];
+      return e.map( d => ({id : d.payload.doc.id , data : d.payload.doc.data()} ));
+      }).subscribe(e => {
+        this.companies = e;
+      });
+
+      this.subs.push(x);
+
+      const newsHandler = this.db.collection(env.collections.news);
+      const y = newsHandler.snapshotChanges().map( e => {
+        return e.map( d => ({id : d.payload.doc.id , data : d.payload.doc.data()} ));
+      }).subscribe(e => {this.news = e; });
+
+      this.subs.push(y);
+    }
+    unsubscribe() {
+      let x;
+      while ( x = this.subs.pop()) {
+        x.unsubscribe();
+      }
+    }
+
     constructor(private db: AngularFirestore,
         private auth: AngularFireAuth,
         private snck: MatSnackBar
         ) {
-            const CompanyHandler = db.collection(env.collections.companies);
-            CompanyHandler.snapshotChanges().map( e => {
-            this.companies = [];
-            return e.map( d => ({id : d.payload.doc.id , data : d.payload.doc.data()} ));
-            }).subscribe(e => {this.companies = e; });
-
-            const newsHandler = db.collection(env.collections.news);
-            newsHandler.snapshotChanges().map( e => {
-              return e.map( d => ({id : d.payload.doc.id , data : d.payload.doc.data()} ));
-            }).subscribe(e => {this.news = e; });
-        }
+          this.subs = [];
+         }
 
   register(companyId: string) {
       const myid = this.auth.auth.currentUser.uid;
@@ -34,8 +54,8 @@ export class DBService  {
             .doc(myid).collection(env.collections.registered).doc(companyId);
       const setRegisteredInCompany = this.db.firestore.collection(env.collections.companies)
             .doc(companyId).collection(env.collections.registered).doc(myid);
-      batch.set(setUserRegistered, {reg : true});
-      batch.set(setRegisteredInCompany, {reg : true});
+      batch.set(setUserRegistered, {created_at : firebase.database.ServerValue.TIMESTAMP});
+      batch.set(setRegisteredInCompany, {created_at : firebase.database.ServerValue.TIMESTAMP});
       batch.commit().then(() => {
       this.snck.open(Text.success_register_message, null, {duration: 1000});
     }, (err) => {
