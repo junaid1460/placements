@@ -10,6 +10,7 @@ import { Text } from '../app.text';
 @Injectable()
 export class DBService  {
     companies: any[];
+    news: any[];
     constructor(private db: AngularFirestore,
         private auth: AngularFireAuth,
         private snck: MatSnackBar
@@ -19,15 +20,20 @@ export class DBService  {
             this.companies = [];
             return e.map( d => ({id : d.payload.doc.id , data : d.payload.doc.data()} ));
             }).subscribe(e => {this.companies = e; });
+
+            const newsHandler = db.collection(env.collections.news);
+            newsHandler.snapshotChanges().map( e => {
+              return e.map( d => ({id : d.payload.doc.id , data : d.payload.doc.data()} ));
+            }).subscribe(e => {this.news = e; });
         }
 
   register(companyId: string) {
       const myid = this.auth.auth.currentUser.uid;
       const batch = this.db.firestore.batch();
-      const setUserRegistered = this.db.firestore.collection('users')
-            .doc(myid).collection('registered').doc(companyId);
-      const setRegisteredInCompany = this.db.firestore.collection('companies')
-            .doc(companyId).collection('registered').doc(myid);
+      const setUserRegistered = this.db.firestore.collection(env.collections.users)
+            .doc(myid).collection(env.collections.registered).doc(companyId);
+      const setRegisteredInCompany = this.db.firestore.collection(env.collections.companies)
+            .doc(companyId).collection(env.collections.registered).doc(myid);
       batch.set(setUserRegistered, {reg : true});
       batch.set(setRegisteredInCompany, {reg : true});
       batch.commit().then(() => {
