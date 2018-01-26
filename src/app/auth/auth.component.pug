@@ -34,7 +34,8 @@ ng-template(#mobile)
                 button(mat-raised-button, (click)="signOut()") Sign Out
         router-outlet
 ng-template(#desktop)
-    div(class="dmain")
+    router-outlet(*ngIf="this.auth.loggedIn != true")
+    div(class="dmain", *ngIf="this.auth.loggedIn == true")
         div(class="dtoolbar")
             mat-toolbar(*ngIf="this.auth.loggedIn", class="toolbar")
                 div(class="tbar")
