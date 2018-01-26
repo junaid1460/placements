@@ -1,15 +1,10 @@
 mat-toolbar 
     div(class="tbar")
-        span Student
-        button(mat-raised-button, (click)="signOut()") Sign Out
+        div(class="row")
+            button(mat-icon-button)
+                mat-icon menu
+            span Student
+        button(mat-raised-button) Sign Out
 
-mat-accordion
-    mat-expansion-panel(*ngFor="let company of companies|async")
-        mat-expansion-panel-header 
-            mat-panel-title {{company.data['name']}}
-            mat-panel-description {{company.data['reg_last_date']}}
-        mat-list
-            mat-list-item(*ngFor="let v of company.data | keyval") {{ v.key }} : {{ v.value }}
-        mat-action-row
-            button(mat-button, (click)="register(company.id)") register
+router-outlet(name="studenRoutes")
 
