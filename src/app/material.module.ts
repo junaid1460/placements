@@ -10,7 +10,8 @@ import {
     MatSnackBarModule,
     MatExpansionModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatSidenavModule
 } from '@angular/material';
 
 export const modules = [
@@ -23,5 +24,6 @@ export const modules = [
     MatSnackBarModule,
     MatExpansionModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatSidenavModule
 ];
