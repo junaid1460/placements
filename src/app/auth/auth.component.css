@@ -8,12 +8,17 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    
+}
+.toolbar {
+    background: #3F51B5;
 }
 
 .row {
     display: flex;
     flex-direction: row;
     align-items: center;
+    color: white;
 }
 .cover {
     height: 100vh;
