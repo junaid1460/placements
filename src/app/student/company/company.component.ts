@@ -10,6 +10,7 @@ import { DBService } from '../../services/db.service';
 import { WindowService } from '../../services/window.service';
 
 @Component({
+  selector: 'app-companies',
   templateUrl: './company.component.html',
   styleUrls: ['./company.component.css']
 })

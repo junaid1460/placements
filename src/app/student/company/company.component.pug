@@ -1,6 +1,10 @@
 div([ngClass]="this.ws.layout")
+    h3(class="sh", mat-subheader) Companies
     mat-accordion
+        
         mat-expansion-panel(*ngFor="let company of db.companies")
+         
+           
             mat-expansion-panel-header 
                 mat-panel-title {{company.data['name']}}
                 mat-panel-description {{company.data['reg_last_date']}}
