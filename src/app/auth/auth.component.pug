@@ -6,11 +6,12 @@ ng-template(#mobile)
         mat-sidenav(#d, class="drawer", mode="")
             div(class="user")
             mat-nav-list((click)="d.close()")
-                
-                a(mat-list-item, [routerLink]="['news']") 
+                //- fix for nav-focus issue
+                a(href="#", style="display:none")
+                a(mat-list-item, [routerLink]="['news']", routerLinkActive="active") 
                     mat-icon(mat-list-icon) format_list_bulleted
                     span News
-                a(mat-list-item, [routerLink]="['companies']") 
+                a(mat-list-item, [routerLink]="['companies']",routerLinkActive="active") 
                     mat-icon(mat-list-icon) business
                     span Companies
                 mat-divider
@@ -53,7 +54,8 @@ ng-template(#desktop)
                     a(mat-list-item) 
                         mat-icon(mat-list-icon) settings
                         span Settings
-            div(class="dnews")
-                app-news
-            div(class="dcompanies")
-                app-companies
+            div(class="dcont")
+                div(class="dnews")
+                    app-companies
+                div(class="dcompanies")
+                    app-news
