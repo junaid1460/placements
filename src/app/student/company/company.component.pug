@@ -6,7 +6,8 @@ div([ngClass]="this.ws.layout")
          
            
             mat-expansion-panel-header 
-                mat-panel-title {{company.data['name']}}
+                mat-panel-title 
+                    h4 {{company.data['name']}}
                 mat-panel-description {{company.data['reg_last_date']}}
             mat-list
                 mat-list-item(*ngFor="let v of company.data | keyval") {{ v.key }} : {{ v.value }}
