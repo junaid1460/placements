@@ -1,6 +1,8 @@
 div([ngClass]="ws.layout")
     h3(mat-subheader, class="sh") News
-    mat-card
+    mat-card(*ngFor="let val of db.news", style="margin:10px")
         mat-card-header
-            mat-card-title Placement
-            mat-card-subtitle Fake Fake Fake
+            mat-card-title
+                h3 {{ val.data.title}}
+        mat-card-content 
+            p([innerHTML]="val.data.content")
