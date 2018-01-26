@@ -8,7 +8,10 @@ export const env  = {
         messagingSenderId: '649844661943'
       },
       collections: {
-        companies : 'companies'
+        companies : 'companies',
+        users: 'users',
+        news : 'news',
+        registered : 'registered'
       },
       app: {
         name : 'placements'
