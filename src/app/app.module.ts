@@ -8,15 +8,15 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 // components
-import { StudentComponent } from './student/student.component';
+// import { StudentComponent } from './student/student.component';
 import { LoginComponent } from './login/login.component';
 import { AuthComponent } from './auth/auth.component';
 
+// modules
+import { StudentModule } from './student/student.module';
+
 // services
 import { WindowService } from './services/window.service';
-
-// pipes
-import { KeyValPipe } from './pipes/key.pipe';
 
 import { env } from './app.env';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,10 +28,9 @@ document.title = env.app.name;
 
 @NgModule({
   declarations: [
-    StudentComponent,
+    // StudentComponent,
     LoginComponent,
     AuthComponent,
-    KeyValPipe
   ],
   imports: [ BrowserModule,
     FormsModule,
@@ -40,9 +39,11 @@ document.title = env.app.name;
     AngularFireModule.initializeApp(env.firebase, env.app.name),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    ...modules
+    ...modules,
+    StudentModule,
   ],
   providers: [WindowService],
-  bootstrap: [AuthComponent]
+  bootstrap: [AuthComponent],
+  // entryComponents: [StudentModule]
 })
 export class AppModule { }
