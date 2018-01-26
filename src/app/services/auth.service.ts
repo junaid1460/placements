@@ -10,7 +10,10 @@ export class AuthService  {
         this.auth.authState.subscribe(e => {
             if (e) {
                 this.loggedIn = true;
-                this.router.navigate(['/news']);
+                const url = this.router.url;
+                if (url === '' || url === '/login') {
+                    this.router.navigate(['/news']);
+                }
             } else {
                 this.loggedIn = false;
                 this.router.navigate(['/login']);
