@@ -1,1 +1,8 @@
+mat-toolbar(*ngIf="this.auth.loggedIn")
+    div(class="tbar")
+        div(class="row")
+            button(mat-icon-button)
+                mat-icon menu
+            span Student
+        button(mat-raised-button, (click)="signOut()") Sign Out
 router-outlet
