@@ -9,7 +9,7 @@ import { Text } from '../../app.text';
 
 
 @Component({
-  templateUrl: './compoany.component.html',
+  templateUrl: './company.component.html',
   styleUrls: ['./company.component.css']
 })
 export class CompanyComponent {
