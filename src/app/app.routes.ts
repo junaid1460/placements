@@ -1,14 +1,24 @@
 import { RouterModule, Routes} from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { StudentModule } from './student/student.module';
+import { CompanyComponent } from './student/company/company.component';
+import { NewsComponent } from './student/news/news.component';
+
 const routes: Routes  = [
     {
         path : 'login',
         component : LoginComponent
     },
     {
-        path : 'student',
-        loadChildren: 'app/student/student.module#StudentModule'
+        path : 'news',
+        component: NewsComponent
+    },
+    {
+        path: 'companies',
+        component: CompanyComponent
+    },
+    {
+        path: '**',
+        redirectTo: ''
     }
 ];
 
