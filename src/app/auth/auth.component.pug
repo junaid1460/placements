@@ -1,32 +1,59 @@
     
+div(*ngIf="ws.layout == 'mobile'; then mobile else desktop")
 
-mat-sidenav-container(class="cover" autoresize)
-    mat-sidenav(#d, class="drawer", mode="")
-        div(class="user")
-        mat-nav-list((click)="d.close()")
-            
-            a(mat-list-item, [routerLink]="['news']") 
-                mat-icon(mat-list-icon) format_list_bulleted
-                span News
-            a(mat-list-item, [routerLink]="['companies']") 
-                mat-icon(mat-list-icon) business
-                span Companies
-            mat-divider
-            a(mat-list-item) 
-                mat-icon(mat-list-icon) info
-                span About
-            a(mat-list-item) 
-                mat-icon(mat-list-icon) help
-                span Help
-            mat-divider
-            a(mat-list-item) 
-                mat-icon(mat-list-icon) settings
-                span Settings
-    mat-toolbar(*ngIf="this.auth.loggedIn", class="toolbar")
-        div(class="tbar")
-            div(class="row")
-                button(mat-icon-button, (click)="d.toggle()")
-                    mat-icon menu
-                span Student
-            button(mat-raised-button, (click)="signOut()") Sign Out
-    router-outlet
+ng-template(#mobile)
+    mat-sidenav-container(class="cover" autoresize)
+        mat-sidenav(#d, class="drawer", mode="")
+            div(class="user")
+            mat-nav-list((click)="d.close()")
+                
+                a(mat-list-item, [routerLink]="['news']") 
+                    mat-icon(mat-list-icon) format_list_bulleted
+                    span News
+                a(mat-list-item, [routerLink]="['companies']") 
+                    mat-icon(mat-list-icon) business
+                    span Companies
+                mat-divider
+                a(mat-list-item) 
+                    mat-icon(mat-list-icon) info
+                    span About
+                a(mat-list-item) 
+                    mat-icon(mat-list-icon) help
+                    span Help
+                mat-divider
+                a(mat-list-item) 
+                    mat-icon(mat-list-icon) settings
+                    span Settings
+        mat-toolbar(*ngIf="this.auth.loggedIn", class="toolbar")
+            div(class="tbar")
+                div(class="row")
+                    button(mat-icon-button, (click)="d.toggle()")
+                        mat-icon menu
+                    span Student
+                button(mat-raised-button, (click)="signOut()") Sign Out
+        router-outlet
+ng-template(#desktop)
+    div(class="dmain")
+        div(class="dtoolbar")
+            mat-toolbar(*ngIf="this.auth.loggedIn", class="toolbar")
+                div(class="tbar")
+                    div(class="row")
+                        span Student
+                    button(mat-raised-button, (click)="signOut()") Sign Out
+        div(class="dcontent")
+            div(class="dsidebar")
+                mat-nav-list((click)="d.close()")
+                    a(mat-list-item) 
+                        mat-icon(mat-list-icon) info
+                        span About
+                    a(mat-list-item) 
+                        mat-icon(mat-list-icon) help
+                        span Help
+                    mat-divider
+                    a(mat-list-item) 
+                        mat-icon(mat-list-icon) settings
+                        span Settings
+            div(class="dnews")
+                app-news
+            div(class="dcompanies")
+                app-companies
