@@ -13,13 +13,11 @@ import { DBService } from '../../services/db.service';
   styleUrls: ['./company.component.css']
 })
 export class CompanyComponent {
-  companies: Observable<any>;
   CompanyHandler: AngularFirestoreCollection<any>;
   constructor(
-    private db: DBService,
+    public db: DBService,
     private snck: MatSnackBar
               ) {
-    this.companies = this.db.companies;
   }
 
   register = (companyId: string) => {this.db.register(companyId); };
