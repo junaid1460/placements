@@ -1,20 +1,15 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { env } from '../app.env';
-import { Router} from '@angular/router';
+import { AuthService } from '../services/auth.service';
 @Component({
     selector: 'app-root',
     templateUrl : './auth.component.html',
     styleUrls: ['auth.component.css']
 })
 export class AuthComponent {
-    constructor(private auth: AngularFireAuth, private router: Router) {
-        this.auth.authState.subscribe(e => {
-            if (e) {
-                this.router.navigate(['/student']);
-            } else {
-                this.router.navigate(['/login']);
-            }
-        });
+    constructor(public auth: AuthService) {
+
+    }
+    signOut() {
+        this.auth.auth.auth.signOut();
     }
 }
