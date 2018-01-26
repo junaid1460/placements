@@ -1,6 +1,6 @@
 import { RouterModule, Routes} from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { StudentComponent } from './student/student.component';
+import { StudentModule } from './student/student.module';
 const routes: Routes  = [
     {
         path : 'login',
@@ -8,7 +8,7 @@ const routes: Routes  = [
     },
     {
         path : 'student',
-        component : StudentComponent
+        loadChildren: 'app/student/student.module#StudentModule'
     }
 ];
 
