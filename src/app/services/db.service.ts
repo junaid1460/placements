@@ -21,18 +21,20 @@ export class DBService  {
             }).subscribe(e => {this.companies = e; });
         }
 
-        register(companyId: string) {
-            const myid = this.auth.auth.currentUser.uid;
-            const data = {  registred : true};
-            this.db.collection('users')
-          .doc(myid).collection('registered').doc(companyId).set(data)
-          .then(() => {
-            this.snck.open(Text.success_register_message, null, {duration: 1000});
-          }, (err) => {
-            this.snck.open(Text.failure_register_message, null, {duration: 1000});
-          });
-        }
-
+  register(companyId: string) {
+      const myid = this.auth.auth.currentUser.uid;
+      const batch = this.db.firestore.batch();
+      const setUserRegistered = this.db.firestore.collection('users')
+            .doc(myid).collection('registered').doc(companyId);
+      const setRegisteredInCompany = this.db.firestore.collection('companies')
+            .doc(companyId).collection('registered').doc(myid);
+      batch.set(setUserRegistered, {reg : true});
+      batch.set(setRegisteredInCompany, {reg : true});
+      batch.commit().then(() => {
+      this.snck.open(Text.success_register_message, null, {duration: 1000});
+    }, (err) => {
+      this.snck.open(Text.failure_register_message, null, {duration: 1000});
+    });
+  }
 
 }
-
