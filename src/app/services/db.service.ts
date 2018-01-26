@@ -9,15 +9,16 @@ import { Text } from '../app.text';
 
 @Injectable()
 export class DBService  {
-    companies: Observable<any>;
+    companies: any[];
     constructor(private db: AngularFirestore,
         private auth: AngularFireAuth,
         private snck: MatSnackBar
         ) {
             const CompanyHandler = db.collection(env.collections.companies);
-            this.companies = CompanyHandler.snapshotChanges().map( e => {
+            CompanyHandler.snapshotChanges().map( e => {
+            this.companies = [];
             return e.map( d => ({id : d.payload.doc.id , data : d.payload.doc.data()} ));
-            });
+            }).subscribe(e => {this.companies = e; });
         }
 
         register(companyId: string) {
