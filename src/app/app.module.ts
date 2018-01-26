@@ -17,6 +17,7 @@ import { AuthComponent } from './auth/auth.component';
 // services
 import { WindowService } from './services/window.service';
 import { AuthService } from './services/auth.service';
+import { DBService } from './services/db.service';
 
 // pipes
 
@@ -48,7 +49,7 @@ document.title = env.app.name;
     ...modules,
     // StudentModule,
   ],
-  providers: [WindowService, AuthService],
+  providers: [WindowService, AuthService, DBService],
   bootstrap: [AuthComponent],
   // entryComponents: [StudentModule]
 })
