@@ -1,4 +1,4 @@
-# Devops workshop content repo
+# Firebase placements app
 
 [![Build Status](https://travis-ci.org/junaid1460/placements.svg?branch=master)](https://travis-ci.org/junaid1460/placements)
 
