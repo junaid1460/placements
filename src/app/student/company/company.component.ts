@@ -7,6 +7,7 @@ import { Company } from '../../app.datatype';
 import { MatSnackBar } from '@angular/material';
 
 import { DBService } from '../../services/db.service';
+import { WindowService } from '../../services/window.service';
 
 @Component({
   templateUrl: './company.component.html',
@@ -16,6 +17,7 @@ export class CompanyComponent {
   CompanyHandler: AngularFirestoreCollection<any>;
   constructor(
     public db: DBService,
+    public ws: WindowService,
     private snck: MatSnackBar
               ) {
   }
