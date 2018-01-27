@@ -13,10 +13,10 @@ export class AuthService  {
             student: 3
     };
     validRoutes: Set<String> = new Set([
-        'news', 'admin', 'companies', 'profile', 'settings', 'about', 'help'
+        '/news', '/admin', '/companies', '/profile', '/settings', '/about', '/help'
     ]);
     fullScreenURLs: Set<String> = new Set([
-        '/settings', '/admin', '/about', '/profile', '/help'
+        '/settings', '/admin'
     ]);
     usertype: number = null;
     fullscreen: Boolean = false;
@@ -42,6 +42,7 @@ export class AuthService  {
                     }
                     this.usertype = this.users.student;
                     const url = this.router.url;
+                    console.log(url);
                     if ( !this.validRoutes.has(url)) {
                         this.router.navigate(['/news']);
                     }
