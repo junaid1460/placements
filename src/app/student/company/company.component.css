@@ -2,7 +2,11 @@
     max-width: 500px;
     min-width: 200px;
     margin: 0 auto;
+    width: 100%
+}
 
+:host{
+    width:100%;
 }
 .mobile{
     max-width: 90vw;
