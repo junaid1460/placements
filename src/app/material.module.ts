@@ -13,7 +13,8 @@ import {
     MatIconModule,
     MatSidenavModule,
     MatProgressBarModule,
-    MatChipsModule
+    MatChipsModule,
+    MatDialogModule
 } from '@angular/material';
 
 export const modules = [
@@ -29,5 +30,6 @@ export const modules = [
     MatIconModule,
     MatSidenavModule,
     MatProgressBarModule,
-    MatChipsModule
+    MatChipsModule,
+    MatDialogModule
 ];
