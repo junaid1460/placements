@@ -1,14 +1,21 @@
-div(*ngIf="this.auth.usertype  == this.auth.users.guest;then guest else user")
+router-outlet(name="main")
+    div(*ngIf="this.auth.usertype == null; then loading else loaded")
 
-ng-template(#user)
-    div(*ngIf="this.auth.usertype == this.auth.users.admin;then admin else student")
-    ng-template(#student)
-        div(*ngIf="ws.layout == 'mobile'; then mobile else desktop")
-        ng-template(#mobile)
-            app-mobile
-        ng-template(#desktop)
-            app-desk
-    ng-template(#admin)
-        router-outlet
-ng-template(#guest)
-    router-outlet
+    ng-template(#loaded)
+        div(*ngIf="this.auth.usertype  == this.auth.users.guest;then guest else user")
+
+        ng-template(#user)
+            div(*ngIf="this.auth.usertype == this.auth.users.admin;then admin else student")
+            ng-template(#student)
+                div(*ngIf="ws.layout == 'mobile'; then mobile else desktop")
+                ng-template(#mobile)
+                    app-mobile
+                ng-template(#desktop)
+                    app-desk
+            ng-template(#admin)
+                router-outlet
+        ng-template(#guest)
+            router-outlet
+    ng-template(#loading)
+        div(class="loading")
+            h2(class="message") Loading
