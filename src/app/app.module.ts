@@ -19,6 +19,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
 import { HelpComponent } from './help/help.component';
 import { AboutComponent } from './about/about.component';
+import { SidebarComponent } from './auth/sidebar/sidebar.component';
 
 // dialogs
 import { CompanyRegistrationDialog } from './student/company/company.registration.dialog';
@@ -56,7 +57,8 @@ document.title = env.app.name;
     ProfileComponent,
     AboutComponent,
     HelpComponent,
-    SettingsComponent
+    SettingsComponent,
+    SidebarComponent
   ],
   imports: [ BrowserModule,
     FormsModule,
