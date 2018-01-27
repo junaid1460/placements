@@ -11,9 +11,11 @@ export class AuthService  {
             guest: 2,
             student: 3
     };
-
-    usertype: number = this.users.admin;
-    constructor(public auth: AngularFireAuth, private router: Router,
+    validRoutes: Set<String> = new Set([
+        'news', 'admin', 'companies'
+    ]);
+    usertype: number = null;
+    constructor(public auth: AngularFireAuth, public router: Router,
         private db: DBService) {
         this.auth.authState.subscribe(e => {
             if (e) {
@@ -25,7 +27,7 @@ export class AuthService  {
                     }
                     this.usertype = this.users.student;
                     const url = this.router.url;
-                    if (url === '' || url === '/login') {
+                    if ( !this.validRoutes.has(url)) {
                         this.router.navigate(['/news']);
                     }
                     this.db.subscribe();
