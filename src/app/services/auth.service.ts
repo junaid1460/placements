@@ -6,19 +6,32 @@ import { DBService } from './db.service';
 
 @Injectable()
 export class AuthService  {
-    loggedIn: Boolean = false;
+    public users: Users = {
+            admin: 1,
+            guest: 2,
+            student: 3
+    };
+
+    usertype: number = this.users.admin;
     constructor(public auth: AngularFireAuth, private router: Router,
         private db: DBService) {
         this.auth.authState.subscribe(e => {
             if (e) {
-                this.loggedIn = true;
-                const url = this.router.url;
-                if (url === '' || url === '/login') {
-                    this.router.navigate(['/news']);
-                }
-                this.db.subscribe();
+                this.db.isAdmin().subscribe(user => {
+                    if (user.admin && user.admin === true) {
+                        this.usertype = this.users.admin;
+                        this.router.navigate(['/admin']);
+                        return;
+                    }
+                    this.usertype = this.users.student;
+                    const url = this.router.url;
+                    if (url === '' || url === '/login') {
+                        this.router.navigate(['/news']);
+                    }
+                    this.db.subscribe();
+                });
             } else {
-                this.loggedIn = false;
+                this.usertype = this.users.guest;
                 this.router.navigate(['/login']);
                 this.db.unsubscribe();
             }
@@ -27,3 +40,8 @@ export class AuthService  {
 
 }
 
+interface Users {
+    admin: number;
+    guest: number;
+    student: number;
+}
