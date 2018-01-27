@@ -11,7 +11,11 @@ export const env  = {
         companies : 'companies',
         users: 'users',
         news : 'news',
-        registered : 'registered'
+        registered : 'registered',
+        settings: 'settings',
+        docs : {
+          portal: 'portal'
+        }
       },
       app: {
         name : 'placements'
