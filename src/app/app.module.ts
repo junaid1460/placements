@@ -12,6 +12,9 @@ import { CompanyComponent } from './student/company/company.component';
 import { NewsComponent } from './student/news/news.component';
 import { LoginComponent } from './login/login.component';
 import { AuthComponent } from './auth/auth.component';
+import { MobileComponent} from './auth/mobile/mobile.component';
+import { DeskComponent } from './auth/desk/desk.component';
+import { AdminComponent } from './admin/main/admin.component';
 
 // dialogs
 import { CompanyRegistrationDialog } from './student/company/company.registration.dialog';
@@ -21,6 +24,7 @@ import { CompanyRegistrationDialog } from './student/company/company.registratio
 import { WindowService } from './services/window.service';
 import { AuthService } from './services/auth.service';
 import { DBService } from './services/db.service';
+import { AuthGuard } from './services/auth.guard';
 
 // pipes
 
@@ -41,7 +45,10 @@ document.title = env.app.name;
     KeyValPipe,
     NewsComponent,
     CompanyComponent,
-    CompanyRegistrationDialog
+    CompanyRegistrationDialog,
+    AdminComponent,
+    MobileComponent,
+    DeskComponent
   ],
   imports: [ BrowserModule,
     FormsModule,
@@ -53,7 +60,7 @@ document.title = env.app.name;
     ...modules,
     // StudentModule,
   ],
-  providers: [WindowService, AuthService, DBService],
+  providers: [WindowService, AuthService, DBService, AuthGuard],
   bootstrap: [AuthComponent],
   entryComponents: [CompanyRegistrationDialog]
 })
