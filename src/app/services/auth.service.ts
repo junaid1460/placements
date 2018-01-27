@@ -13,10 +13,10 @@ export class AuthService  {
             student: 3
     };
     validRoutes: Set<String> = new Set([
-        'news', 'admin', 'companies'
+        'news', 'admin', 'companies', 'profile', 'settings', 'about', 'help'
     ]);
     fullScreenURLs: Set<String> = new Set([
-        '/settings', '/admin'
+        '/settings', '/admin', '/about', '/profile', '/help'
     ]);
     usertype: number = null;
     fullscreen: Boolean = false;
