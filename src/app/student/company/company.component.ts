@@ -22,6 +22,16 @@ export class CompanyComponent {
     private snck: MatSnackBar
               ) {
   }
-
+  expanded(company: any) {
+    if (company.registered == null) {
+      this.db.isRegistered(company.id).subscribe(e => {
+        if (e) {
+          company.registered = true;
+        } else {
+          company.registered = false;
+        }
+      });
+    }
+  }
   register = (companyId: string) => {this.db.register(companyId); };
 }
