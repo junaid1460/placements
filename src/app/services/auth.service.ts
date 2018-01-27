@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { env } from '../app.env';
-import { Router} from '@angular/router';
+import { Router, NavigationStart } from '@angular/router';
 import { DBService } from './db.service';
+import { Console } from '@angular/core/src/console';
 
 @Injectable()
 export class AuthService  {
@@ -14,9 +15,23 @@ export class AuthService  {
     validRoutes: Set<String> = new Set([
         'news', 'admin', 'companies'
     ]);
+    fullScreenURLs: Set<String> = new Set([
+        '/settings', '/admin'
+    ]);
     usertype: number = null;
+    fullscreen: Boolean = false;
     constructor(public auth: AngularFireAuth, public router: Router,
         private db: DBService) {
+        this.router.events.subscribe( route => {
+            if ( route instanceof NavigationStart) {
+                if (this.fullScreenURLs.has(route.url)) {
+                    this.fullscreen = true;
+                } else {
+                    this.fullscreen = false;
+                }
+            }
+        });
+
         this.auth.authState.subscribe(e => {
             if (e) {
                 this.db.isAdmin().subscribe(user => {
