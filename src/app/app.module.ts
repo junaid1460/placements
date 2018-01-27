@@ -15,6 +15,10 @@ import { AuthComponent } from './auth/auth.component';
 import { MobileComponent} from './auth/mobile/mobile.component';
 import { DeskComponent } from './auth/desk/desk.component';
 import { AdminComponent } from './admin/main/admin.component';
+import { ProfileComponent } from './profile/profile.component';
+import { SettingsComponent } from './settings/settings.component';
+import { HelpComponent } from './help/help.component';
+import { AboutComponent } from './about/about.component';
 
 // dialogs
 import { CompanyRegistrationDialog } from './student/company/company.registration.dialog';
@@ -48,7 +52,11 @@ document.title = env.app.name;
     CompanyRegistrationDialog,
     AdminComponent,
     MobileComponent,
-    DeskComponent
+    DeskComponent,
+    ProfileComponent,
+    AboutComponent,
+    HelpComponent,
+    SettingsComponent
   ],
   imports: [ BrowserModule,
     FormsModule,
