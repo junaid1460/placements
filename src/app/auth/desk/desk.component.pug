@@ -1,0 +1,25 @@
+div(class="dmain")
+    div(class="dtoolbar")
+        mat-toolbar( class="toolbar")
+            div(class="tbar")
+                div(class="row")
+                    span Student
+                button(mat-raised-button, (click)="signOut()") Sign Out
+    div(class="dcontent")
+        div(class="dsidebar")
+            mat-nav-list((click)="d.close()")
+                a(mat-list-item) 
+                    mat-icon(mat-list-icon) info
+                    span About
+                a(mat-list-item) 
+                    mat-icon(mat-list-icon) help
+                    span Help
+                mat-divider
+                a(mat-list-item) 
+                    mat-icon(mat-list-icon) settings
+                    span Settings
+        div(class="dcont")
+            div(class="dnews")
+                app-companies
+            div(class="dcompanies")
+                app-news
