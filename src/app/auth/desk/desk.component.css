@@ -18,7 +18,9 @@
 }
 
 
-
+.active {
+    background: #eaeaea
+}
 
 
 .mat-list-icon{
@@ -44,6 +46,8 @@
     flex-direction: row;
     width: 100%;
     overflow-y: scroll;
+    padding-bottom: 100px;
+    justify-content: center;
 }
 
 div.dnews, div.dcompanies {
