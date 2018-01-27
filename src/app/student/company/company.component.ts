@@ -4,10 +4,12 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import { env } from '../../app.env';
 import { Company } from '../../app.datatype';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog, MatDialogModule } from '@angular/material';
 
 import { DBService } from '../../services/db.service';
 import { WindowService } from '../../services/window.service';
+
+import { CompanyRegistrationDialog } from './company.registration.dialog';
 
 @Component({
   selector: 'app-companies',
@@ -19,7 +21,8 @@ export class CompanyComponent {
   constructor(
     public db: DBService,
     public ws: WindowService,
-    private snck: MatSnackBar
+    private snck: MatSnackBar,
+    private dlog: MatDialog
               ) {
   }
   expanded(company: any) {
@@ -33,5 +36,21 @@ export class CompanyComponent {
       });
     }
   }
-  register = (companyId: string) => {this.db.register(companyId); };
+  register(company: any) {
+    const data = {
+      title : `Register for ` + company.data.name,
+      content : `Are you sure? you cannot undo this operation!`
+    };
+    this.dlog.open(CompanyRegistrationDialog, {
+      data : data
+    }).afterClosed().subscribe(e => {
+      if (e === true) {
+        this.db.register(company.id);
+      }
+    });
+
+
+  }
 }
+
+
