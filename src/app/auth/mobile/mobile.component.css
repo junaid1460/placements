@@ -10,14 +10,7 @@
 .toolbar {
     background: #2196f3
 }
-.mat-list-item.active, .mat-list-item.active.mat-list-item-focus{
-    background: #e8e8e8;
-}
 
-.active {
-    box-shadow: 0 0 10px inset black;
-
-}
 
 .row {
     display: flex;

@@ -7,19 +7,7 @@ div(class="dmain")
                 button(mat-raised-button, (click)="signOut()") Sign Out
     div(class="dcontent")
         div(class="dsidebar")
-            mat-nav-list
-                a(mat-list-item) 
-                    mat-icon(mat-list-icon) info
-                    span About
-                a(mat-list-item) 
-                    mat-icon(mat-list-icon) help
-                    span Help
-                mat-divider
-                a(mat-list-item) 
-                    mat-icon(mat-list-icon) settings
-                    span Settings
+            app-sidebar
+        
         div(class="dcont")
-            div(class="dnews")
-                app-companies
-            div(class="dcompanies")
-                app-news
+            router-outlet

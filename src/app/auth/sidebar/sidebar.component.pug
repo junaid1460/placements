@@ -1,0 +1,19 @@
+mat-nav-list
+    a(href="#", style="display:none")
+    a(mat-list-item, [routerLink]="['news']", routerLinkActive="active") 
+        mat-icon(mat-list-icon) format_list_bulleted
+        span News
+    a(mat-list-item, [routerLink]="['companies']",routerLinkActive="active") 
+        mat-icon(mat-list-icon) business
+        span Companies
+    mat-divider
+    a(mat-list-item) 
+        mat-icon(mat-list-icon) info
+        span About
+    a(mat-list-item) 
+        mat-icon(mat-list-icon) help
+        span Help
+    mat-divider
+    a(mat-list-item) 
+        mat-icon(mat-list-icon) settings
+        span Settings
