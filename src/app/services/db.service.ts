@@ -70,4 +70,12 @@ export class DBService  {
             .map(e => e.payload.data());
   }
 
+  isAdmin() {
+      return this.db.collection(env.collections.users)
+        .doc(this.auth.auth.currentUser.uid)
+        .snapshotChanges().map(e => {
+          return e.payload.data();
+        });
+  }
+
 }
