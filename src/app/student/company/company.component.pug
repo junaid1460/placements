@@ -18,4 +18,4 @@ div([ngClass]="this.ws.layout")
                 ng-template(#loaded)
                     mat-chip-list(*ngIf = "company.registered")
                         mat-chip registered
-                    button(*ngIf="!company.registered",mat-button, (click)="register(company.id)") register
+                    button(*ngIf="!company.registered",mat-button, (click)="register(company)") register
