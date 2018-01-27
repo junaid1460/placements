@@ -63,4 +63,11 @@ export class DBService  {
     });
   }
 
+  isRegistered(company: string) {
+    return this.db.collection(env.collections.companies).doc(company)
+            .collection(env.collections.registered)
+            .doc(this.auth.auth.currentUser.uid).snapshotChanges()
+            .map(e => e.payload.data());
+  }
+
 }
