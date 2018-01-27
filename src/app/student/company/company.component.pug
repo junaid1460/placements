@@ -2,7 +2,7 @@ div([ngClass]="this.ws.layout")
     h3(class="sh", mat-subheader) Companies
     mat-accordion
         
-        mat-expansion-panel(*ngFor="let company of db.companies")
+        mat-expansion-panel(*ngFor="let company of db.companies", (opened)="expanded(company)")
          
            
             mat-expansion-panel-header 
@@ -12,4 +12,10 @@ div([ngClass]="this.ws.layout")
             mat-list
                 mat-list-item(*ngFor="let v of company.data | keyval") {{ v.key }} : {{ v.value }}
             mat-action-row
-                button(mat-button, (click)="register(company.id)") register
+                div(*ngIf="company.registered==undefined;then loading else loaded")
+                ng-template(#loading)
+                    mat-progress-bar(mode="buffer")
+                ng-template(#loaded)
+                    mat-chip-list(*ngIf = "company.registered")
+                        mat-chip registered
+                    button(*ngIf="!company.registered",mat-button, (click)="register(company.id)") register
