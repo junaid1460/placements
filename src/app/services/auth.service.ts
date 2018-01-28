@@ -29,7 +29,6 @@ export class AuthService  {
                 } else {
                     this.fullscreen = false;
                 }
-                console.log(route.url);
             }
         });
 
@@ -43,7 +42,6 @@ export class AuthService  {
                     }
                     this.usertype = this.users.student;
                     const url = this.router.url;
-                    console.log(url);
                     if ( !this.validRoutes.has(url)) {
                         this.router.navigate(['/student/news']);
                     }
