@@ -9,18 +9,36 @@ import { HelpComponent } from './help/help.component';
 import { AboutComponent } from './about/about.component';
 import { SidebarComponent } from './auth/sidebar/sidebar.component';
 import { AuthGuard } from './services/auth.guard';
+import { AuthComponent } from './auth/auth.component';
 const routes: Routes  = [
     {
         path : 'login',
-        component : LoginComponent
+        component : LoginComponent,
     },
     {
-        path : 'news',
-        component: NewsComponent
-    },
-    {
-        path: 'companies',
-        component: CompanyComponent
+        path : 'student',
+        component: AuthComponent,
+        children : [
+            {
+                path: '',
+                component: AuthComponent,
+            },
+            {
+                path : 'news',
+                component: NewsComponent
+            }, {
+                path: 'companies',
+                component: CompanyComponent
+            },
+            {
+                path: 'about',
+                component: AboutComponent
+            },
+            {
+                path: 'help',
+                component: HelpComponent
+            }
+        ]
     },
     {
         path: 'admin',
@@ -30,14 +48,6 @@ const routes: Routes  = [
     {
         path: 'settings',
         component: SettingsComponent
-    },
-    {
-        path: 'about',
-        component: AboutComponent
-    },
-    {
-        path: 'help',
-        component: HelpComponent
     },
     {
         path: '**',
