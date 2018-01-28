@@ -11,8 +11,9 @@ export const env  = {
         companies : 'companies',
         users: 'users',
         news : 'news',
+        help : 'help',
+        about : 'about',
         registered : 'registered',
-        settings: 'settings',
         docs : {
           portal: 'portal'
         }
