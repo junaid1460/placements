@@ -1,0 +1,8 @@
+div([ngClass]="ws.layout")
+    h3(class="sh", mat-subheader) About
+    mat-card(*ngFor="let about of this.db.aboutMessages")
+        mat-card-header
+            mat-card-title
+                h3 {{ about.title }}
+        mat-card-content
+                div([innerHTML]="about.content")
