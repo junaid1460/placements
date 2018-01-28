@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import 'hammerjs';
+
 import { FormsModule } from '@angular/forms';
 
 import { AngularFireModule } from 'angularfire2';
