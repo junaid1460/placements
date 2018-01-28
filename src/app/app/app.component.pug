@@ -1,2 +1,11 @@
-div([@anim]="getState(outlet)")
-    router-outlet(#outlet="outlet")
+
+
+div(*ngIf="this.auth.usertype == null; then loading else loaded")
+ng-template(#loaded)
+    div([@anim]="getState(outlet)")
+        router-outlet(#outlet="outlet")
+
+
+ng-template(#loading)
+    div(class="loading")
+        mat-spinner
