@@ -20,6 +20,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { HelpComponent } from './help/help.component';
 import { AboutComponent } from './about/about.component';
 import { SidebarComponent } from './auth/sidebar/sidebar.component';
+import { AppComponent } from './app/app.component';
 
 // dialogs
 import { CompanyRegistrationDialog } from './student/company/company.registration.dialog';
@@ -45,6 +46,7 @@ document.title = env.app.name;
 
 @NgModule({
   declarations: [
+    AppComponent,
     LoginComponent,
     AuthComponent,
     KeyValPipe,
@@ -58,7 +60,7 @@ document.title = env.app.name;
     AboutComponent,
     HelpComponent,
     SettingsComponent,
-    SidebarComponent
+    SidebarComponent,
   ],
   imports: [ BrowserModule,
     FormsModule,
@@ -71,7 +73,7 @@ document.title = env.app.name;
     // StudentModule,
   ],
   providers: [WindowService, AuthService, DBService, AuthGuard],
-  bootstrap: [AuthComponent],
+  bootstrap: [AppComponent],
   entryComponents: [CompanyRegistrationDialog]
 })
 export class AppModule { }
