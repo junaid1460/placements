@@ -20,7 +20,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
@@ -61,5 +61,7 @@
       "host": "0.0.0.0",
       "port": 3000
     }
+  
   }
+  
 }
