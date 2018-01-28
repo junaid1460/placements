@@ -1,26 +1,8 @@
-.tbar {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    
-}
-.mat-nav-list *{
-    background: none;
-}
-.toolbar {
-    background: #2196f3
-}
 
-
-.row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    color: white;
-}
 .cover {
     height: 100vh;
     width:100vw;
+    background: linear-gradient(to bottom, white,white, #919191);
 }
 
 .drawer {
@@ -28,10 +10,11 @@
     max-width: 80vw;
 }
 
+
+
 .user{
     height: 120px;
     width: 100%;
-    background: #2196f3
 }
 
 .mat-list-icon{
