@@ -13,7 +13,7 @@ export class AuthService  {
             student: 3
     };
     validRoutes: Set<String> = new Set([
-        '/news', '/admin', '/companies', '/profile', '/settings', '/about', '/help'
+        '/student/news', '/admin', '/student/companies', '/profile', '/settings', '/student/about', '/student/help'
     ]);
     fullScreenURLs: Set<String> = new Set([
         '/settings', '/admin'
@@ -29,6 +29,7 @@ export class AuthService  {
                 } else {
                     this.fullscreen = false;
                 }
+                console.log(route.url);
             }
         });
 
@@ -44,7 +45,7 @@ export class AuthService  {
                     const url = this.router.url;
                     console.log(url);
                     if ( !this.validRoutes.has(url)) {
-                        this.router.navigate(['/news']);
+                        this.router.navigate(['/student/news']);
                     }
                     this.db.subscribe();
                 });
