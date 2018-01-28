@@ -1,27 +1,4 @@
 
-.tbar {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    
-}
-
-.toolbar {
-    background: #2196f3
-}
-
-.row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    color: white;
-}
-
-
-.active {
-    background: #eaeaea
-}
-
 
 .mat-list-icon{
     margin-right: 10px;
@@ -35,7 +12,7 @@
     width: 100vw;
 }
 .dcontent {
-    background: #eaeaea;
+    background: linear-gradient(to bottom, white,white, #dfdfdf);
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -48,6 +25,8 @@
     overflow-y: scroll;
     padding-bottom: 100px;
     justify-content: center;
+    padding: 15px;
+    padding-bottom: 100px;
 }
 
 div.dnews, div.dcompanies {
@@ -57,7 +36,7 @@ div.dnews, div.dcompanies {
 }
 
 .dsidebar {
-    width: 300px;
+    width: 400px;
     background: #f0f0f0
 }
 div.dcompanies {
