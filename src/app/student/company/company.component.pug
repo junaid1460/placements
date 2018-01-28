@@ -8,14 +8,14 @@ div([ngClass]="this.ws.layout")
             mat-expansion-panel-header 
                 mat-panel-title 
                     h4 {{company.data['name']}}
-                mat-panel-description {{company.data['reg_last_date']}}
+                mat-panel-description {{ datestring(company.data['reg_last_date'])}}
             mat-list
                 mat-list-item(*ngFor="let v of company.data | keyval") {{ v.key }} : {{ v.value }}
             mat-action-row
-                div(*ngIf="company.registered==undefined;then loading else loaded")
+                div(*ngIf="company.registered==undefined || company.canreg == undefined;then loading else loaded")
                 ng-template(#loading)
                     mat-progress-bar(mode="buffer")
                 ng-template(#loaded)
                     mat-chip-list(*ngIf = "company.registered")
                         mat-chip registered
-                    button(*ngIf="!company.registered",mat-button, (click)="register(company)") register
+                    button(*ngIf="!company.registered",[disabled]="!company.canreg",mat-button, (click)="register(company)") register
