@@ -23,6 +23,11 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
     background: mat-color($candy-app-primary);
 }
 
+body{
+    background: linear-gradient(to bottom, white,white, #919191);
+    height: 100vh;
+    width:100vw;
+}
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
