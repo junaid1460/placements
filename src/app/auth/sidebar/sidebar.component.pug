@@ -1,4 +1,5 @@
 mat-nav-list
+
     a(href="#", style="display:none")
     a(mat-list-item, [routerLink]="['news']", routerLinkActive="active") 
         mat-icon(mat-list-icon) format_list_bulleted
@@ -7,13 +8,15 @@ mat-nav-list
         mat-icon(mat-list-icon) business
         span Companies
     mat-divider
-    a(mat-list-item) 
+    h3(mat-subheader) More
+    a(mat-list-item, [routerLink]="['about']",routerLinkActive="active") 
         mat-icon(mat-list-icon) info
         span About
-    a(mat-list-item) 
+    a(mat-list-item, [routerLink]="['help']",routerLinkActive="active") 
         mat-icon(mat-list-icon) help
         span Help
     mat-divider
-    a(mat-list-item) 
+    h3(mat-subheader) Tools
+    a(mat-list-item, [routerLink]="['settings']",routerLinkActive="active") 
         mat-icon(mat-list-icon) settings
         span Settings
