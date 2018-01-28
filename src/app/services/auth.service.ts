@@ -15,19 +15,17 @@ export class AuthService  {
     validRoutes: Set<String> = new Set([
         '/student/news', '/admin', '/student/companies', '/profile', '/settings', '/student/about', '/student/help'
     ]);
-    fullScreenURLs: Set<String> = new Set([
-        '/settings', '/admin'
+    childUrls: Set<String> = new Set([
+        '/student/news', '/student/companies', '/student/about', '/student/help'
     ]);
     usertype: number = null;
-    fullscreen: Boolean = false;
+    childRoute: String;
     constructor(public auth: AngularFireAuth, public router: Router,
         private db: DBService) {
         this.router.events.subscribe( route => {
             if ( route instanceof NavigationStart) {
-                if (this.fullScreenURLs.has(route.url)) {
-                    this.fullscreen = true;
-                } else {
-                    this.fullscreen = false;
+                if (this.childUrls.has(route.url)) {
+                    this.childRoute = route.url;
                 }
             }
         });

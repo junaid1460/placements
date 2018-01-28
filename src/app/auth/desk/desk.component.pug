@@ -1,4 +1,5 @@
 div(class="dmain")
+    router-outlet(name="secondary")
     div(class="dtoolbar")
         mat-toolbar( class="toolbar", color="primary")
             div(class="tbar")
@@ -9,5 +10,5 @@ div(class="dmain")
         div(class="dsidebar")
             app-sidebar
         
-        div(class="dcont")
-            router-outlet
+        div(class="dcont", [@inneranim1]="this.auth.childRoute")
+            router-outlet(#ioutlet="outlet")
