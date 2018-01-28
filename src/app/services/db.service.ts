@@ -15,6 +15,8 @@ export class DBService  {
     companies: any[];
     news: any[];
     subs: Subscription[];
+    helpMessages: Message[];
+    aboutMessages: Message[];
     subscribe() {
       const CompanyHandler = this.db.collection(env.collections.companies);
       const x =  CompanyHandler.snapshotChanges().map( e => {
@@ -32,7 +34,19 @@ export class DBService  {
       }).subscribe(e => {this.news = e; });
 
       this.subs.push(y);
+
+      const helpHandler = this.db.collection(env.collections.help)
+            .snapshotChanges().map(e => e.map( f => (f.payload.doc.data())))
+            .subscribe( e => {this.helpMessages = <Message[]>e; });
+      this.subs.push(helpHandler);
+
+      const aboutHandler = this.db.collection(env.collections.about)
+            .snapshotChanges().map(e => e.map( f => (f.payload.doc.data())))
+            .subscribe( e => {this.aboutMessages = <Message[]>e; });
+      this.subs.push(aboutHandler);
+
     }
+
     unsubscribe() {
       let x;
       while ( x = this.subs.pop()) {
@@ -70,6 +84,13 @@ export class DBService  {
             .map(e => e.payload.data());
   }
 
+  canRegister(company: string) {
+    return this.db.collection(env.collections.companies)
+    .doc(company).collection('canreg').doc(this.auth.auth.currentUser.uid)
+     .snapshotChanges().map(e => e.payload.exists.valueOf());
+  }
+
+
   isAdmin() {
       return this.db.collection(env.collections.users)
         .doc(this.auth.auth.currentUser.uid)
@@ -78,4 +99,9 @@ export class DBService  {
         });
   }
 
+}
+
+interface Message {
+  title: string;
+  content: string;
 }
