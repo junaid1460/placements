@@ -10,6 +10,7 @@ import { DBService } from '../../services/db.service';
 import { WindowService } from '../../services/window.service';
 
 import { CompanyRegistrationDialog } from './company.registration.dialog';
+import { Console } from '@angular/core/src/console';
 
 @Component({
   selector: 'app-companies',
@@ -25,14 +26,32 @@ export class CompanyComponent {
     private dlog: MatDialog
               ) {
   }
+  datestring(date: string) {
+    if (date) {
+      const d = new Date(date);
+      return d.toDateString();
+    }
+    return 'Not available';
+  }
+
   expanded(company: any) {
-    if (company.registered == null) {
-      this.db.isRegistered(company.id).subscribe(e => {
+    if (company.handler == null) {
+      
+      company.handler2 = this.db.canRegister(company.id).subscribe(success => {
+        console.log('canregister', company.data.name);
+        company.canreg = true;
+      }, error => {
+        console.log(error);
+        company.canreg = false;
+      });
+      company.handler = this.db.isRegistered(company.id).subscribe(e => {
+        console.log('isregistered', company.data.name);
         if (e) {
           company.registered = true;
         } else {
           company.registered = false;
         }
+        console.log(company);
       });
     }
   }
