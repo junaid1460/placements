@@ -21,7 +21,8 @@ const routes: Routes  = [
         children : [
             {
                 path: '',
-                component: AuthComponent,
+                redirectTo: 'news',
+                pathMatch: 'full'
             },
             {
                 path : 'news',
