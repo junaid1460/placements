@@ -36,28 +36,23 @@ export class CompanyComponent {
 
   expanded(company: any) {
     if (company.handler == null) {
-      
       company.handler2 = this.db.canRegister(company.id).subscribe(success => {
-        console.log('canregister', company.data.name);
         company.canreg = true;
       }, error => {
-        console.log(error);
         company.canreg = false;
       });
       company.handler = this.db.isRegistered(company.id).subscribe(e => {
-        console.log('isregistered', company.data.name);
         if (e) {
           company.registered = true;
         } else {
           company.registered = false;
         }
-        console.log(company);
       });
     }
   }
   register(company: any) {
     const data = {
-      title : `Register for ` + company.data.name,
+      title : `Register for ${company.data.name}?`,
       content : `Are you sure? you cannot undo this operation!`
     };
     this.dlog.open(CompanyRegistrationDialog, {
