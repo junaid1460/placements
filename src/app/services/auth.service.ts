@@ -35,7 +35,7 @@ export class AuthService  {
         this.auth.authState.subscribe(e => {
             if (e) {
                 this.db.isAdmin().subscribe(user => {
-                    if (user.admin && user.admin === true) {
+                    if (user && user.admin && user.admin === true) {
                         this.usertype = this.users.admin;
                         this.router.navigate(['/admin']);
                         return;
