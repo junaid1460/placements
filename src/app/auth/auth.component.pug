@@ -2,21 +2,11 @@
 
 div(*ngIf="this.auth.usertype == null; then loading else loaded")
 ng-template(#loaded)
-    div(*ngIf="this.auth.fullscreen;then fullscreen else normal")
-    ng-template(#fullscreen)
-        router-outlet
-
-    ng-template(#normal)
-        div(*ngIf="this.auth.usertype  == this.auth.users.guest;then guest else user")
-
-        ng-template(#user)
-            div(*ngIf="ws.layout == 'mobile'; then mobile else desktop")
-            ng-template(#mobile)
-                app-mobile
-            ng-template(#desktop)
-                app-desk
-        ng-template(#guest)
-            router-outlet
+        div(*ngIf="ws.layout == 'mobile'; then mobile else desktop")
+        ng-template(#mobile)
+            app-mobile
+        ng-template(#desktop)
+            app-desk
 ng-template(#loading)
     div(class="loading")
         mat-spinner
