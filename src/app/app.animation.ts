@@ -16,26 +16,26 @@ export function animation(name) {
                 position: 'fixed',
                 width: '100%',
                 opacity: '0',
-                transform: 'scale(1.5)'
+                transform: 'translateX(100%)',
+                height: '100vh'
               }),
               {optional: true}),
             // move page off screen right on leave
             query(':leave',
-              animate('500ms ease',
+              animate('100ms ease',
                 style({
                   position: 'fixed',
-                  width: '100%',
-                  opacity: '0',
-                  transform: 'scale(1.5)'
+                  width: '100vw',
+                  transform: 'translateX(-100%)'
                 })
               ),
             {optional: true}),
             // move page in screen from left to right
             query(':enter',
-              animate('500ms ease',
+              animate('400ms ease',
                 style({
-                  opacity: 1,
-                  transform: 'scale(1)'
+                  opacity: '1',
+                  transform: 'translateX(0)',
                 })
               ),
             {optional: true}),
@@ -49,25 +49,26 @@ export function animation2(name) {
              // Initial state of new route
              query(':enter',
                style({
-                position: 'fixed',
+                position: 'relative',
                  opacity: '0',
-                 transform: 'translateX(50%)'
+                //  width: '100%',
                }),
                {optional: true}),
              // move page off screen right on leave
              query(':leave',
-               animate('50ms ease',
+               animate('0ms ease',
                  style({
+                     position:'fixed',
                    opacity: '0',
                  })
                ),
              {optional: true}),
              // move page in screen from left to right
              query(':enter',
-               animate('500ms ease',
+               animate('600ms ease',
                  style({
                    opacity: '1',
-                   transform:  'scale(1) translateX(0)'
+                   transform:  ' translateX(0)'
                  })
                ),
              {optional: true}),
