@@ -1,0 +1,8 @@
+div([ngClass]="this.ws.layout")
+    h3(class="sh", mat-subheader) Help
+    mat-card(*ngFor="let help of this.db.helpMessages")
+        mat-card-header
+            mat-card-title
+                h3 {{ help.title }}
+        mat-card-content
+            div([innerHTML]="help.content") 
