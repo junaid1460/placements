@@ -1,12 +1,12 @@
-mat-sidenav-container(class="cover" autoresize)
-  mat-sidenav(#d, class="drawer", mode="")
-      div(class="user")
+mat-sidenav-container(class="cover")
+  mat-sidenav(#d, class="drawer", mode="push")
+      div(class="user primary")
       app-sidebar((click)="d.close()")
-  mat-toolbar(class="toolbar")
+  mat-toolbar(color="primary", class="toolbar")
       div(class="tbar")
           div(class="row")
               button(mat-icon-button, (click)="d.toggle()")
                   mat-icon menu
-              span Student
+              span Placement
           button(mat-raised-button, (click)="signOut()") Sign Out
   router-outlet
