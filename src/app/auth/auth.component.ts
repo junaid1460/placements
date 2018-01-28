@@ -3,7 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { WindowService } from '../services/window.service';
 
 @Component({
-    selector: 'app-root',
+    selector: 'app-auth',
     templateUrl : './auth.component.html',
     styleUrls: ['auth.component.css'],
     encapsulation : ViewEncapsulation.None
