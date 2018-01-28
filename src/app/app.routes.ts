@@ -14,10 +14,12 @@ const routes: Routes  = [
     {
         path : 'login',
         component : LoginComponent,
+        data: {state: 'login'}
     },
     {
         path : 'student',
         component: AuthComponent,
+        data: {state: 'student'},
         children : [
             {
                 path: '',
@@ -44,11 +46,13 @@ const routes: Routes  = [
     {
         path: 'admin',
         component: AdminComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        data: {state: 'admin'}
     },
     {
         path: 'settings',
-        component: SettingsComponent
+        component: SettingsComponent,
+        data: {state: 'settings'}
     },
     {
         path: '**',
