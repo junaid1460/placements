@@ -1,8 +1,14 @@
-.mat-list-item.active, .mat-list-item.active.mat-list-item-focus{
-    background: #e8e8e8;
+.mat-nav-list .mat-list-item.active,.mat-nav-list .mat-list-item.active.mat-list-item-focus{
+    background: white;
+    box-shadow: -174px 0px 183px #2196f3;;
 }
 
-.active {
-    box-shadow: 0 0 10px inset black;
+.mat-nav-list .active {
+    box-shadow: -174px 0px 183px #2196f3;;
+    background: white;
+}
 
+
+.mat-nav-list {
+    padding: 0;
 }
