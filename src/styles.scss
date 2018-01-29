@@ -23,6 +23,14 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
     background: mat-color($candy-app-primary);
 }
 
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
 body{
     background: linear-gradient(to bottom, white,white, #919191);
     height: 100vh;
@@ -57,9 +65,7 @@ body{
 }
 
 .desktop {
-    max-width: 600px;
     min-width: 300px;
-    width:100%;
 }
 
 .mobile {
@@ -68,8 +74,8 @@ body{
 
 }
 .mobile, .desktop {
-    padding-bottom: 40px;
     margin:0 auto;
+    height: 100%;
 }
 
 .sh{ 
