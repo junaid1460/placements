@@ -12,11 +12,11 @@ import * as firebase from 'firebase';
 
 @Injectable()
 export class DBService  {
-    companies: any[];
-    news: any[];
-    subs: Subscription[];
-    helpMessages: Message[];
-    aboutMessages: Message[];
+    companies: any[] = [];
+    news: any[] = [];
+    subs: Subscription[] = [];
+    helpMessages: Message[] = [];
+    aboutMessages: Message[] = [];
     subscribe() {
       const CompanyHandler = this.db.collection(env.collections.companies);
       const x =  CompanyHandler.snapshotChanges().map( e => {
@@ -52,6 +52,10 @@ export class DBService  {
       while ( x = this.subs.pop()) {
         x.unsubscribe();
       }
+      this.aboutMessages = [];
+      this.companies = [];
+      this.news = [];
+      this.helpMessages = [];
     }
 
     constructor(private db: AngularFirestore,
