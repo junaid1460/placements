@@ -1,0 +1,6 @@
+div(*ngIf="check; then loading else loaded")
+ng-template(#loading)
+  div(class="loading")
+    mat-spinner
+ng-template(#loaded)
+  ng-content
