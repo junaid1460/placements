@@ -1,21 +1,22 @@
-div([ngClass]="this.ws.layout")
-    h3(class="sh", mat-subheader) Companies
-    mat-accordion
-        
-        mat-expansion-panel(*ngFor="let company of db.companies", (opened)="expanded(company)")
-         
-           
-            mat-expansion-panel-header 
-                mat-panel-title 
-                    h4 {{company.data['name']}}
-                mat-panel-description {{ datestring(company.data['reg_last_date'])}}
-            mat-list
-                mat-list-item(*ngFor="let v of company.data | keyval") {{ v.key }} : {{ v.value }}
-            mat-action-row
-                div(*ngIf="company.registered==undefined || company.canreg == undefined;then loading else loaded")
-                ng-template(#loading)
-                    mat-progress-bar(mode="buffer")
-                ng-template(#loaded)
-                    mat-chip-list(*ngIf = "company.registered")
-                        mat-chip registered
-                    button(*ngIf="!company.registered",[disabled]="!company.canreg",mat-button, (click)="register(company)") register
+app-loading([check]="db.companies.length == 0")
+    app-device-check
+        h3(class="sh", mat-subheader) Companies
+        mat-accordion
+            
+            mat-expansion-panel(*ngFor="let company of db.companies", (opened)="expanded(company)")
+            
+            
+                mat-expansion-panel-header 
+                    mat-panel-title 
+                        h4 {{company.data['name']}}
+                    mat-panel-description {{ datestring(company.data['reg_last_date'])}}
+                mat-list
+                    mat-list-item(*ngFor="let v of company.data | keyval") {{ v.key }} : {{ v.value }}
+                mat-action-row
+                    div(*ngIf="company.registered==undefined || company.canreg == undefined;then loading else loaded")
+                    ng-template(#loading)
+                        mat-progress-bar(mode="buffer")
+                    ng-template(#loaded)
+                        mat-chip-list(*ngIf = "company.registered")
+                            mat-chip registered
+                        button(*ngIf="!company.registered",[disabled]="!company.canreg",mat-button, (click)="register(company)") register

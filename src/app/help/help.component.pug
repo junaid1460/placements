@@ -1,8 +1,9 @@
-div([ngClass]="this.ws.layout")
-    h3(class="sh", mat-subheader) Help
-    mat-card(*ngFor="let help of this.db.helpMessages")
-        mat-card-header
-            mat-card-title
-                h3 {{ help.title }}
-        mat-card-content
-            div([innerHTML]="help.content") 
+app-loading([check]="db.helpMessages.length == 0")
+    app-device-check
+        h3(class="sh", mat-subheader) Help
+        mat-card(*ngFor="let help of this.db.helpMessages")
+            mat-card-header
+                mat-card-title
+                    h3 {{ help.title }}
+            mat-card-content
+                div([innerHTML]="help.content") 

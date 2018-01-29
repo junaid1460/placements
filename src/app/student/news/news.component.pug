@@ -1,8 +1,10 @@
-div([ngClass]="ws.layout")
-    h3(mat-subheader, class="sh") News
-    mat-card(*ngFor="let val of db.news", style="margin:10px")
-        mat-card-header
-            mat-card-title
-                h3 {{ val.data.title}}
-        mat-card-content 
-            p([innerHTML]="val.data.content")
+app-loading([check]="this.db.news.length == 0")
+    app-device-check
+        h3(mat-subheader, class="sh") News
+        mat-card(*ngFor="let val of db.news", style="margin:10px")
+            mat-card-header
+                mat-card-title
+                    h3 {{ val.data.title}}
+            mat-card-content 
+                p([innerHTML]="val.data.content")
+
