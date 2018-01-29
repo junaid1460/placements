@@ -14,32 +14,37 @@ const routes: Routes  = [
     {
         path : 'login',
         component : LoginComponent,
-        data: {state: 'login'}
+        data: {state: 'left'}
     },
     {
         path : 'student',
         component: AuthComponent,
-        data: {state: 'student'},
+        data: {state: 'right'},
         children : [
             {
                 path: '',
                 redirectTo: 'news',
-                pathMatch: 'full'
+                pathMatch: 'full',
+                data: {state: 'right'},
             },
             {
                 path : 'news',
-                component: NewsComponent
+                component: NewsComponent,
+                data: {state: 'right'},
             }, {
                 path: 'companies',
-                component: CompanyComponent
+                component: CompanyComponent,
+                data: {state: 'right'},
             },
             {
                 path: 'about',
-                component: AboutComponent
+                component: AboutComponent,
+                data: {state: 'right'},
             },
             {
                 path: 'help',
-                component: HelpComponent
+                component: HelpComponent,
+                data: {state: 'right'},
             }
         ]
     },
@@ -47,12 +52,12 @@ const routes: Routes  = [
         path: 'admin',
         component: AdminComponent,
         canActivate: [AuthGuard],
-        data: {state: 'admin'}
+        data: {state: 'left'}
     },
     {
         path: 'settings',
         component: SettingsComponent,
-        data: {state: 'settings'}
+        data: {state: 'left'}
     },
     {
         path: '**',
