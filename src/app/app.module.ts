@@ -24,6 +24,7 @@ import { AboutComponent } from './about/about.component';
 import { SidebarComponent } from './auth/sidebar/sidebar.component';
 import { AppComponent } from './app/app.component';
 import { LoadingComponent } from './loading/loading.component';
+import { DeviceCheckComponent } from './device-check/device-check.component';
 
 // dialogs
 import { CompanyRegistrationDialog } from './student/company/company.registration.dialog';
@@ -64,7 +65,8 @@ document.title = env.app.name;
     HelpComponent,
     SettingsComponent,
     SidebarComponent,
-    LoadingComponent
+    LoadingComponent,
+    DeviceCheckComponent
   ],
   imports: [ BrowserModule,
     FormsModule,
