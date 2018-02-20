@@ -44,3 +44,5 @@ sudo apt-get install -f --yes
 sudo -H -u $user bash -c "cd ~ 
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 "
+
+print "\nNow reopen terminal and type : nvm install v8.9.4\n"
