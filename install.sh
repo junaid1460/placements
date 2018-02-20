@@ -32,17 +32,17 @@ sudo usermod -aG docker "$user" #add student to docker group
 
 
 
-wget https://az764295.vo.msecnd.net/stable/490ef761b76b3f3b3832eff7a588aac891e5fe80/code_1.19.2-1515599945_amd64.deb -O vscode.deb
+# wget https://az764295.vo.msecnd.net/stable/490ef761b76b3f3b3832eff7a588aac891e5fe80/code_1.19.2-1515599945_amd64.deb -O vscode.deb
 
-sudo dpkg -i vscode.deb
+# sudo dpkg -i vscode.deb
 
 # install missing dependencies if exist
 sudo apt-get install -f --yes
 
 
 
-sudo -H -u $user bash -c "cd ~ 
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
-"
+sudo -H -u $user bash -c "cd ~  && curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash"
 
-echo "\nNow reopen terminal and type : nvm install v8.9.4\n"
+echo 
+echo
+echo "Now reopen terminal and type : nvm install v8.9.4"
