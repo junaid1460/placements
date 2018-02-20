@@ -5,4 +5,19 @@ mat-toolbar(class="toolbar", color="primary")
                   mat-icon arrow_back
             span Settings
         button(mat-raised-button, (click)="signOut()") Sign Out
+app-device-check
+    mat-card
+        mat-card-content
+            mat-menu(#theme="matMenu")
+                div(class="theme-grid")
+                    div(class="row")
+                        button(mat-icon-button, value="red",  style="background:#f44336")
+                        button(mat-icon-button, value="bluegray", style="background:#607d8b")
+                        button(mat-icon-button, value="green", style="background:#4caf50")
+                    div(class="row")
+                        button(mat-icon-button, value="orange", style="background:#ff5722")
+                        button(mat-icon-button, value="indigo" style="background:#3f51b5")
+                        button(mat-icon-button, value="blue" style="background:#2196f3")
+            button(mat-button, [matMenuTriggerFor]="theme") Theme
+                    
         

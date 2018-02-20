@@ -15,7 +15,8 @@ import {
     MatProgressBarModule,
     MatChipsModule,
     MatDialogModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatMenuModule
 } from '@angular/material';
 
 export const modules = [
@@ -33,5 +34,6 @@ export const modules = [
     MatProgressBarModule,
     MatChipsModule,
     MatDialogModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatMenuModule
 ];

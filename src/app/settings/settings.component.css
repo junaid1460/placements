@@ -1,0 +1,9 @@
+.theme-grid {
+    margin: 0 auto;
+    padding: 5px
+}
+
+.theme-grid button {
+    display: inline-block;
+    margin: 2px
+}
