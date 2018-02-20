@@ -16,7 +16,7 @@ fi
 
 user=$1
 
-if [ "$(cat /etc/passwd|grep ^$user:)"  == "" ]
+if [ "$(cat /etc/passwd|grep ^$user\:)"  == "" ]
 then
     print "Invalid username"
     exit
