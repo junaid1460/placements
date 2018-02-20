@@ -39,11 +39,8 @@ sudo dpkg -i vscode.deb
 # install missing dependencies if exist
 sudo apt-get install -f --yes
 
-sudo 
 
 
-
-sudo -H -u $user bash -c "
+sudo -H -u $user bash -c "cd ~ 
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
-source ~/.bashrc
-nvm install v8.0"
+"
