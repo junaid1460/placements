@@ -16,6 +16,12 @@ fi
 
 user=$1
 
+if [ "$(cat /etc/passwd|grep ^$user:)"  == "" ]
+then
+    print "Invalid username"
+    exit
+fi
+
 # install missing dependencies if exist
 sudo apt-get install -f
 
