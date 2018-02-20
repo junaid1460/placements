@@ -23,7 +23,7 @@ then
 fi
 
 # install missing dependencies if exist
-sudo apt-get install -f
+sudo apt-get install -f --yes
 
 sudo apt-get install --yes docker docker-compose git --allow-change-held-packages
 
@@ -37,7 +37,7 @@ wget https://az764295.vo.msecnd.net/stable/490ef761b76b3f3b3832eff7a588aac891e5f
 sudo dpkg -i vscode.deb
 
 # install missing dependencies if exist
-sudo apt-get install -f -y
+sudo apt-get install -f --yes
 
 sudo 
 
